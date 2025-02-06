@@ -1,0 +1,12 @@
+[submodule "Rubik.Model"]
+	path = Rubik.Model
+	url = https://rodrigocsm@github.com/rodrigocsm/Rubik.Model.git
+[submodule "Rubik.Tests"]
+	path = Rubik.Tests
+	url = https://rodrigocsm@github.com/rodrigocsm/Rubik.Tests.git
+[submodule "Rubik.Solver"]
+	path = Rubik.Solver
+	url = https://rodrigocsm@github.com/rodrigocsm/Rubik.Solver.git
+[submodule "Rubik.WPF"]
+	path = Rubik.WPF
+	url = https://rodrigocsm@github.com/rodrigocsm/Rubik.WPF.git
