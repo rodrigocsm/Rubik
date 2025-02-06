@@ -1,0 +1,44 @@
+ #Gitignore for Rubik.Model project
+
+# Ignore build directories
+bin/
+obj/
+
+# Ignore subdirectories
+.cr/
+.vs/
+
+Rubik.*/
+
+
+# Ignore user-specific files
+*.user
+*.rsuser
+*.suo
+
+# Ignore temporary files
+*.tmp
+*.log
+*.vspscc
+*.vssscc
+
+# Ignore Visual Studio Code settings
+.vscode/
+
+# Ignore package directories
+node_modules/
+packages/
+
+# Ignore compiled files
+*.dll
+*.exe
+*.pdb
+
+# Ignore coverage reports
+coverage/
+*.coverage
+*.coveragexml
+
+# Ignore other system files
+.DS_Store
+Thumbs.db
