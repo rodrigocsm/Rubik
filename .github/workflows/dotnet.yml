@@ -1,4 +1,4 @@
-name: Build and Test
+name: Build and Test Rubik
 
 on:
   push:
@@ -8,33 +8,41 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows-latest   # usa ambiente Windows para compatibilidade com WPF
 
     steps:
-      - name: Checkout código
+      - name: 📥 Checkout código
         uses: actions/checkout@v4
 
-      - name: Configurar .NET
+      - name: 🧰 Configurar .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x' # ajuste conforme sua versão
+          dotnet-version: '8.0.x' # ajuste conforme o SDK do seu projeto
 
-      - name: Restaurar dependências
+      - name: 🕵️ Mostrar estrutura do repositório (debug)
+        run: |
+          pwd
+          ls -R
+
+      - name: 📦 Restaurar dependências
         run: dotnet restore Rubik.sln
+        working-directory: Rubik
 
-      - name: Compilar solução
+      - name: 🏗️ Compilar solução
         run: dotnet build Rubik.sln --configuration Release --no-restore
+        working-directory: Rubik
 
-      - name: Executar testes
+      - name: 🧪 Executar testes
         run: dotnet test Rubik.Tests/Rubik.Tests.csproj --configuration Release --no-build --verbosity normal
+        working-directory: Rubik
 
-      - name: Publicar artefato (WPF)
-        if: success()
+      - name: 🚀 Publicar aplicação WPF
         run: dotnet publish Rubik.WPF/Rubik.WPF.csproj -c Release -o ./artifacts/WPF
+        working-directory: Rubik
 
-      - name: Salvar artefatos de build
+      - name: 📦 Salvar artefatos de build
         uses: actions/upload-artifact@v4
         with:
-          name: rubik-build
-          path: ./artifacts/WPF
+          name: Rubik-WPF
+          path: Rubik/artifacts/WPF
 
