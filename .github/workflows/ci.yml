@@ -13,11 +13,12 @@ jobs:
     steps:
       - name: 📥 Checkout código
         uses: actions/checkout@v4
+        with:
+          submodules: true          
 
       - name: 🧰 Configurar .NET
         uses: actions/setup-dotnet@v4
         with:
-          submodules: true
           dotnet-version: '8.0.x' # ajuste conforme o SDK do seu projeto
 
       - name: 🕵️ Mostrar estrutura do repositório (debug)
@@ -27,19 +28,15 @@ jobs:
 
       - name: 📦 Restaurar dependências
         run: dotnet restore Rubik.sln
-        working-directory: Rubik
 
       - name: 🏗️ Compilar solução
         run: dotnet build Rubik.sln --configuration Release --no-restore
-        working-directory: Rubik
 
       - name: 🧪 Executar testes
         run: dotnet test Rubik.Tests/Rubik.Tests.csproj --configuration Release --no-build --verbosity normal
-        working-directory: Rubik
 
       - name: 🚀 Publicar aplicação WPF
         run: dotnet publish Rubik.WPF/Rubik.WPF.csproj -c Release -o ./artifacts/WPF
-        working-directory: Rubik
 
       - name: 📦 Salvar artefatos de build
         uses: actions/upload-artifact@v4
