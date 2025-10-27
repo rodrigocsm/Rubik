@@ -17,6 +17,7 @@ jobs:
       - name: 🧰 Configurar .NET
         uses: actions/setup-dotnet@v4
         with:
+          submodules: true
           dotnet-version: '8.0.x' # ajuste conforme o SDK do seu projeto
 
       - name: 🕵️ Mostrar estrutura do repositório (debug)
